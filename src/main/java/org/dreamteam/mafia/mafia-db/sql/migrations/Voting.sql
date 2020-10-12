@@ -1,4 +1,4 @@
-create table "Table"."Voiting"
+create table "Table"."Voting"
 (
     vote_id      serial  not null
         constraint voiting_pk
@@ -9,7 +9,7 @@ create table "Table"."Voiting"
     votes_amount integer not null
 );
 
-alter table "Table"."Voiting"
+alter table "Table"."Voiing"
     owner to postgres;
 
 create unique index voiting_vote_id_uindex
