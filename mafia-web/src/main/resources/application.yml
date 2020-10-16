@@ -1,0 +1,13 @@
+spring:
+  profiles.active: no_db
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+logging:
+  level:
+    root: error
+    spring.framework: info
+    org.dreamteam: debug

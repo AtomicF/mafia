@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="V99.998__test_data_votings.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
+    <script-file value="$PROJECT_DIR$/db/sql/V99.998__test_data_votings.sql" />
+    <script-mode>FILE</script-mode>
+    <data-source id="a81379f6-714f-4515-a9aa-ffc414f522a5" namespace="database/&quot;mafia&quot;/schema/&quot;public&quot;" />
+    <method v="2" />
+  </configuration>
+</component>

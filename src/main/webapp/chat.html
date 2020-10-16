@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru-Ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Чат на WebSocket-ах</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="js/stomp.js"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+
+</head>
+<body class="bodyPadding">
+<p>
+    <button id="connect" onclick="connect()">Установить подключение к серверу</button>
+    <button disabled id="disconnect" onclick="disconnect()">Сбросить подключение</button>
+    <input class="message_input" id="name_input" placeholder="Введите имя пользователя"/>
+    <button class="text" id="set_name" onclick="setName()">Установить имя</button>
+</p>
+<p>
+    <button id="mafia_role_button" onclick="chooseRole(this.id)">Играть за мафию</button>
+    <button id="civilians_role_button" onclick="chooseRole(this.id)">Играть за мирного</button>
+    <button id="start_game_button" onclick="startGame(this.id)">Играть за мирного</button>
+</p>
+
+<div class="tab">
+    <button class="tablinks" id="civilians_chat_button" onclick="openCity(event, 'civilians_chat')"
+            style="visibility:hidden">Мирные
+    </button>
+    <button class="tablinks" id="mafia_chat_button" onclick="openCity(event, 'mafia_chat')" style="visibility:hidden">
+        Мафия
+    </button>
+</div>
+
+<!-- Tab content -->
+<div class="tabcontent" id="mafia_chat">
+    <div id="mafia_chat_box"></div>
+    <input class="message_input" id="message_input_mafia_value" placeholder="Введите сообщение..."/>
+    <button class="text" disabled id="send_mafia_button"
+            onclick="sendMessage('/app/mafia_message','message_input_mafia_value')">Отправить сообщение
+    </button>
+    <script>
+        document.getElementById("message_input_mafia_value")
+            .addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("send_mafia_button").click();
+                    document.getElementById("message_input_mafia_value").value = "";
+                }
+            });
+    </script>
+</div>
+
+<div class="tabcontent" id="civilians_chat">
+    <div id="civilians_chat_box"></div>
+    <input class="message_input" id="message_input_civilians_value" placeholder="Введите сообщение..."/>
+    <button class="text" disabled id="send_civilians_button"
+            onclick="sendMessage('/app/civ_message','message_input_civilians_value')">Отправить сообщение
+    </button>
+    <script>
+        document.getElementById("message_input_civilians_value")
+            .addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("send_civilians_button").click();
+                    document.getElementById("message_input_civilians_value").value = "";
+                }
+            });
+    </script>
+</div>
+
+</body>
+</html>
